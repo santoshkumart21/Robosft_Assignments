@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.input-form{
+  border: 2px solid grey;
+  border-radius:15px
+}
+.banner-css{
+  background-color: lightgrey;
+  margin: 20px;
+  height: 240px;
+  text-align: center;
+}
+
+.margin-row{
+  /* margin: 15px; */
+  padding: 20px;
+}
+
+.header-css{
+  border: 2px solid black;
+  margin: 5px;
+}
+.result-area{
+display:grid;
+justify-content:center;
+}

@@ -1,15 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
 import { Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import Step1 from "./components/step1";
 import Step2 from "./components/step2";
 import Step3 from "./components/step3";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import history from './history';
+import history from './common/history';
 
 function App() {
-
   return (
     <div >  
       <Router history={history}>

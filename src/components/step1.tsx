@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import history from '../history';
+import history from '../common/history';
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
-import Header from '../header';
-import Paragraph from '../paraGraph';
-import options from "../classes/storeOptions";
+import Header from '../common/header';
+import Paragraph from '../common/paraGraph';
+import storeOptions from "../utilities/storeValues";
+
+interface propsIterface {
+}
+interface stateInterface {
+    userOption:string
+}
 
 // Step1 class component
-class Step1 extends Component<any, any> {
-    constructor(props: any) {
+class Step1 extends Component<propsIterface, stateInterface> {
+    constructor(props:propsIterface) {
         super(props)
         this.state = {
             userOption: ""
@@ -15,12 +21,11 @@ class Step1 extends Component<any, any> {
     }
     userOption = () => {
         //Set selected option in store
-        options.setOption(this.state.userOption)
+        storeOptions.setOption(this.state.userOption)
         history.push('/step2')
     }
 
     render() {
-        // const {userOption } = this.state
         // TSX script starts here
         return (
             <Container fluid={true}>
@@ -28,23 +33,20 @@ class Step1 extends Component<any, any> {
                 <Header />
                 {/* Header  section*/}
                 
-                <Row style={{ margin: "15px" }}>
+                <Row className="margin-row">
                     <Col md={5}  >
                     <Paragraph />
                     </Col>
-                    <Col md={5} style={{border:'2px solid grey',borderRadius:'15px'}}>
+                    <Col md={5} className="input-form">
                         <h2>Step 1 : Select your shape </h2>
                         {/* Shape selection form starts here  */}
-                        <Form >
-                            
+                        <Form >                            
                             <fieldset>
                                 <Form.Group as={Row} className="mb-3">
-                                    {/* <Form.Label as="legend" > */}
                                     <p>
                                         Please select the shape that you would like
                                         to calculate the area of and press the
                                         button "Go to step 2"
-                                        {/* </Form.Label> */}
                                     </p>
                                     {/* Radio buttons section */}
                                     <Col sm={10}>
@@ -96,7 +98,7 @@ class Step1 extends Component<any, any> {
                                     <Button onClick={this.userOption} disabled={this.state.userOption ? false : true}>Go to step 2</Button>
                                 </Col>
                                 <Col >
-                                    or <text onClick={() => { window.location.reload() }}>Cancel</text>
+                                    or <span onClick={() => { window.location.reload() }}>Cancel</span>
                                 </Col>
                             </Form.Group>
                         </Form>
@@ -104,7 +106,7 @@ class Step1 extends Component<any, any> {
 
                     </Col>
                     <Col md={2} >
-                        <div style={{ backgroundColor: 'lightgrey', margin: "20px", height: '240px', textAlign: 'center' }}>
+                        <div className='banner-css'>
                             120x240
                             Ad Banner
                         </div>

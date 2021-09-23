@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
-import Header from '../header';
-import Paragraph from '../paraGraph';
-import history from '../history';
-import options from "../classes/storeOptions";
-
+import Header from '../common/header';
+import Paragraph from '../common/paraGraph';
+import history from '../common/history';
+import storeOptions from "../utilities/storeValues";
 
 class Step3 extends Component {
     render() {
-        let getValue: any[] = options.getArea()
-        let getInput: any[] = options.showInputs()
-        let getShape: any[] = options.getOption()
-        let shape: string = getShape[0]
+        const getValue: number[] = storeOptions.getArea()
+        const getInput: string[] = storeOptions.showInputs()
+        const getShape: string[] = storeOptions.getOption()
+        const shape: string = getShape[0]
         return (
             <Container  fluid={true}>
                 {/* Header  section*/}
                     <Header />
                 {/* Header  section*/}               
-                <Row style={{ margin: "15px" }}>
+                <Row className="margin-row">
                     <Col md={5}  >
                         <Paragraph />
                     </Col>
@@ -27,21 +26,15 @@ class Step3 extends Component {
                         <Form>                            
                             <fieldset>
                                 <Form.Group as={Row} className="mb-3">
-                                    {/* <Form.Label as="legend" > */}
                                     <p>
                                         You have calculated the area of a { shape+" "}
                                         with {getInput}. Below is your result:
-                                        {/* </Form.Label> */}
                                     </p>
-                                    {/* Radio buttons section */}
-                                    <Col style={{display:'grid',justifyContent:'center'}}>
+                                    <Col className='result-area'>
                                         <Form.Label><h4>The area is <b>{getValue[0]}</b></h4></Form.Label>
-                                    {/* <Form.Control type="email" placeholder="text" /> */}
                                     </Col>
-                                    {/* Radio buttons section */}
                                 </Form.Group>
                             </fieldset>
-                            
                             {/* Cancel/Calculate buttons */}
                             <Form.Group as={Row} className="mb-3">
                                 <Col >
@@ -52,13 +45,12 @@ class Step3 extends Component {
                         {/* Shape selection form ends here  */}
                     </Col>
                     <Col md={2} >
-                        <div style={{ backgroundColor: 'lightgrey', margin: "20px", height: '240px', textAlign: 'center' }}>
+                        <div className='banner-css'>
                             120x240
                             Ad Banner
                         </div>
                     </Col>
                 </Row>
-
             </Container>
         );
     }
